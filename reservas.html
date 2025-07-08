@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>CD Fotografía | Reserva de Citas</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="reservas fotógrafo Tulancingo, agendar sesión fotográfica, citas fotografía Hidalgo" name="keywords">
+    <meta content="Sistema de reservas en línea para sesiones fotográficas profesionales en Tulancingo, Hidalgo" name="description">
+
+    <!-- Favicon -->
+    <link href="img/camera-favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+
+    <!-- Firebase (versión actualizada) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+
+    <!-- FullCalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Calendar API -->
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Estilos mejorados y simplificados para el calendario */
+        #calendar {
+            height: 600px;
+            /* Asegúrate que esta propiedad está aplicada */
+            min-height: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .fc-header-toolbar {
+            margin-bottom: 1em !important;
+            padding: 10px 5px;
+            border-radius: 6px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .fc-toolbar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .fc-button {
+            background: #f8f9fa !important;
+            border: 1px solid #dee2e6 !important;
+            color: #495057 !important;
+            padding: 6px 12px !important;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .fc-button:hover {
+            background: #e9ecef !important;
+        }
+
+        .fc-button-primary:not(:disabled).fc-button-active {
+            background: #e9ecef !important;
+            color: #495057 !important;
+        }
+
+        .fc-col-header-cell {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 8px 0;
+            font-weight: 500;
+            border: none !important;
+        }
+
+        .fc-daygrid-day {
+            border: 1px solid #e9ecef !important;
+            transition: all 0.2s;
+        }
+
+        .fc-daygrid-day:hover {
+            background: #f8f9fa;
+        }
+
+        .fc-day-today {
+            background-color: rgba(13, 110, 253, 0.1) !important;
+        }
+
+        .fc-daygrid-day-number {
+            padding: 4px 6px !important;
+            font-size: 0.9rem;
+        }
+
+        .fc-event {
+            background-color: #dc3545 !important;
+            border-color: #dc3545 !important;
+            padding: 2px 4px !important;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .fc-event:hover {
+            opacity: 0.9;
+        }
+
+        .availability-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .availability-dot.available {
+            background-color: #28a745;
+        }
+
+        .availability-dot.booked {
+            background-color: #dc3545;
+        }
+
+        .availability-dot.unavailable {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+    </div>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-camera me-3"></i>CD </h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                <a href="about.html" class="nav-item nav-link">Sobre Mí</a>
+                <a href="portafolio_1.html" class="nav-item nav-link">Portafolio</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="bodas.html" class="dropdown-item">Bodas</a>
+                        <a href="retratos.html" class="dropdown-item">Retratos</a>
+                        <a href="eventos.html" class="dropdown-item">Eventos</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+            </div>
+            <a href="reservas.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Reservar Sesión<i class="fa fa-calendar ms-3"></i></a>
+            <a href="login.html" class="nav-item nav-link"><i class="fa fa-user me-1"></i> Iniciar Sesión</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Booking Section -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-dark px-3">Reservas</h6>
+                <h1 class="mb-4">Agenda Tu Sesión Fotográfica</h1>
+                <p class="lead">Selecciona una fecha disponible y completa el formulario para reservar</p>
+            </div>
+
+            <div class="row g-4 mt-4">
+                <!-- Calendario -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="booking-card">
+                        <div id="calendar"></div>
+                        <div class="mt-4">
+                            <h5 class="mb-3">Leyenda de disponibilidad:</h5>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="availability-dot available me-2"></div>
+                                <span>Disponible</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="availability-dot booked me-2"></div>
+                                <span>Reservado</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="availability-dot unavailable me-2"></div>
+                                <span>No disponible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Formulario de Reserva -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="booking-card">
+                        <h3 class="mb-4"><i class="fas fa-calendar-check me-2"></i> Detalles de Reserva</h3>
+
+                        <form id="bookingForm">
+                            <div class="mb-3">
+                                <label class="form-label">Fecha seleccionada*</label>
+                                <input type="text" class="form-control" id="selectedDate" readonly required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nombre completo*</label>
+                                    <input type="text" class="form-control" id="clientName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Teléfono*</label>
+                                    <input type="tel" class="form-control" id="clientPhone" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Correo electrónico*</label>
+                                <input type="email" class="form-control" id="clientEmail" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tipo de sesión*</label>
+                                    <select class="form-select" id="sessionType" required>
+                                        <option value="" disabled selected>Selecciona...</option>
+                                        <option value="retrato">Retratos</option>
+                                        <option value="boda">Boda</option>
+                                        <option value="evento">Evento</option>
+                                        <option value="producto">Fotografía de Producto</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Hora preferida*</label>
+                                    <select class="form-select" id="timeSlot" required>
+                                        <option value="" disabled selected>Selecciona una hora</option>
+                                        <!-- Se llena dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Ubicación o estudio</label>
+                                <select class="form-select" id="location">
+                                    <option value="" selected>Selecciona ubicación</option>
+                                    <option value="estudio">Estudio en Tulancingo Centro</option>
+                                    <option value="exterior">Locación exterior</option>
+                                    <option value="domicilio">Sesión a domicilio</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Notas adicionales</label>
+                                <textarea class="form-control" id="notes" rows="2" placeholder="Detalles especiales, ideas para la sesión, etc."></textarea>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">
+                                    Acepto los <a href="terms.html" target="_blank">términos y condiciones</a> y <a href="privacy.html" target="_blank">política de privacidad</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100 py-3" id="submitBtn">
+                                <i class="fas fa-calendar-plus me-2"></i> Confirmar Reserva
+                            </button>
+
+                            <div class="text-center mt-3">
+                                <p class="mb-2">¿Prefieres agendar por WhatsApp?</p>
+                                <a href="#" class="btn btn-success px-4" id="whatsappBtn">
+                                    <i class="fab fa-whatsapp me-2"></i> Reservar por WhatsApp
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Confirmation Modal (se mantiene igual) -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+                    <!-- ... tu modal actual ... -->
+                </div>
+
+                <!-- Footer Start -->
+                <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="container py-5">
+                        <div class="row g-5">
+                            <div class="col-lg-3 col-md-6">
+                                <h4 class="text-white mb-3">Enlaces</h4>
+                                <a class="btn btn-link" href="about.html">Sobre Mí</a>
+                                <a class="btn btn-link" href="contact.html">Contacto</a>
+                                <a class="btn btn-link" href="privacy.html">Privacidad</a>
+                                <a class="btn btn-link" href="terms.html">Términos</a>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <h4 class="text-white mb-3">Contacto</h4>
+                                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Tulancingo hidalgo centro , Tulancingo, Mexico</p>
+                                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>775 182 0299</p>
+                                <p class="mb-2"><i class="fa fa-envelope me-3"></i>cedillo1618@outlook.es</p>
+                                <div class="d-flex pt-2">
+                                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <h4 class="text-white mb-3">Galería</h4>
+                                <div class="row g-2 pt-2">
+                                    <div class="col-4">
+                                        <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-1.jpg" alt="">
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-2.jpg" alt="">
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-3.jpg" alt="">
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-4.jpg" alt="">
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-5.jpg" alt="">
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-6.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="copyright">
+                            <div class="row">
+                                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                                    &copy; <a class="border-bottom" href="#">CD Fotografía y Video</a>, Todos los derechos reservados.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer End -->
+
+                <!-- Back to Top -->
+                <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+                <!-- JavaScript Libraries -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="lib/wow/wow.min.js"></script>
+
+                <!-- Script principal -->
+                <script>
+                    // Reemplaza el script principal con este código actualizado
+
+                    document.addEventListener('DOMContentLoaded', async function() {
+                        // Ocultar spinner
+                        const spinner = document.getElementById('spinner');
+                        if (spinner) spinner.classList.remove('show');
+
+                        // =============================================
+                        // CONFIGURACIÓN DE FIREBASE (tus datos actuales)
+                        // =============================================
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyAIwFewoQ0TL0jooQFnRBQgUARLvFyE34Y",
+                            authDomain: "cd-fotografia-y-video-b1504.firebaseapp.com",
+                            projectId: "cd-fotografia-y-video-b1504",
+                            storageBucket: "cd-fotografia-y-video-b1504.appspot.com",
+                            messagingSenderId: "545025889860",
+                            appId: "1:545025889860:web:4ae96e00be480eb49d0e11"
+                        };
+
+                        // Inicializar Firebase
+                        firebase.initializeApp(firebaseConfig);
+                        const db = firebase.firestore();
+
+                        // =============================================
+                        // CONFIGURACIÓN DE GOOGLE CALENDAR API
+                        // =============================================
+                        const CLIENT_ID = '545025889860-uv4j3o6s15stdir3nmr1ihguo6itfb7r.apps.googleusercontent.com';
+                        const API_KEY = 'AIzaSyC_bToiK2_ScbktzYBqoQisvDdThtjHvb0';
+                        const CALENDAR_ID = 'primary'; // Usa el calendario principal del fotógrafo
+
+                        // Cargar la API de Google
+                        async function loadGAPI() {
+                            return new Promise((resolve) => {
+                                gapi.load('client:auth2', () => {
+                                    gapi.client.init({
+                                        apiKey: API_KEY,
+                                        clientId: CLIENT_ID,
+                                        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+                                        scope: 'https://www.googleapis.com/auth/calendar.readonly'
+                                    }).then(resolve);
+                                });
+                            });
+                        }
+
+                        // Autenticar con Google
+                        async function authenticateGoogle() {
+                            try {
+                                await loadGAPI();
+                                return gapi.auth2.getAuthInstance().signIn();
+                            } catch (error) {
+                                console.error("Error en autenticación Google:", error);
+                                return null;
+                            }
+                        }
+
+                        // Obtener eventos del calendario de Google
+                        async function getGoogleCalendarEvents() {
+                            try {
+                                const response = await gapi.client.calendar.events.list({
+                                    'calendarId': CALENDAR_ID,
+                                    'timeMin': new Date().toISOString(),
+                                    'showDeleted': false,
+                                    'singleEvents': true,
+                                    'orderBy': 'startTime',
+                                    'maxResults': 250 // Ajusta según necesidad
+                                });
+
+                                return response.result.items.map(event => ({
+                                    title: event.summary || 'Reservado',
+                                    start: event.start.dateTime || event.start.date,
+                                    end: event.end.dateTime || event.end.date,
+                                    backgroundColor: '#dc3545',
+                                    borderColor: '#dc3545',
+                                    extendedProps: {
+                                        source: 'google',
+                                        status: 'booked',
+                                        eventId: event.id
+                                    }
+                                }));
+                            } catch (error) {
+                                console.error("Error al obtener eventos de Google Calendar:", error);
+                                return [];
+                            }
+                        }
+
+                        // =============================================
+                        // VARIABLES GLOBALES
+                        // =============================================
+                        let calendar;
+                        let selectedDate = null;
+                        let googleEvents = [];
+
+                        // Horarios disponibles (ajusta según tu horario laboral)
+                        const availableTimeSlots = [
+                            '09:00', '10:00', '11:00', '12:00',
+                            '13:00', '14:00', '15:00', '16:00', '17:00'
+                        ];
+
+                        // =============================================
+                        // INICIALIZAR CALENDARIO
+                        // =============================================
+                        async function initCalendar() {
+                            const calendarEl = document.getElementById('calendar');
+
+                            if (!calendarEl) {
+                                console.error("ERROR: No se encontró el elemento con ID 'calendar'");
+                                return;
+                            }
+
+                            // Configuración del calendario
+                            calendar = new FullCalendar.Calendar(calendarEl, {
+                                initialView: 'dayGridMonth',
+                                locale: 'es',
+                                headerToolbar: {
+                                    left: 'prev,next today',
+                                    center: 'title',
+                                    right: 'dayGridMonth'
+                                },
+                                dateClick: handleDateClick,
+                                eventClick: handleEventClick,
+                                eventDidMount: function(info) {
+                                    // Estilo para eventos de Google
+                                    if (info.event.extendedProps.source === 'google') {
+                                        info.el.style.borderLeft = '4px solid #4285F4';
+                                    }
+                                }
+                            });
+
+                            calendar.render();
+                            console.log("Calendario renderizado");
+
+                            // Cargar eventos de Google Calendar y Firebase
+                            await loadEvents();
+                        }
+
+                        // Cargar todos los eventos
+                        async function loadEvents() {
+                            try {
+                                // Autenticar con Google
+                                await authenticateGoogle();
+
+                                // Obtener eventos de Google Calendar
+                                googleEvents = await getGoogleCalendarEvents();
+                                calendar.addEventSource(googleEvents);
+
+                                // Obtener reservas de Firebase
+                                const firebaseEvents = await getFirebaseReservations();
+                                calendar.addEventSource(firebaseEvents);
+
+                                console.log("Eventos cargados correctamente");
+                            } catch (error) {
+                                console.error("Error al cargar eventos:", error);
+                            }
+                        }
+
+                        // Obtener reservas de Firebase
+                        async function getFirebaseReservations() {
+                            try {
+                                const snapshot = await db.collection('reservas')
+                                    .where('fecha', '>=', new Date().toISOString().split('T')[0])
+                                    .get();
+
+                                return snapshot.docs.map(doc => {
+                                    const data = doc.data();
+                                    return {
+                                        title: 'Reservado',
+                                        start: `${data.fecha}T${data.hora}:00`,
+                                        backgroundColor: '#dc3545',
+                                        borderColor: '#dc3545',
+                                        extendedProps: {
+                                            source: 'firebase',
+                                            status: 'booked',
+                                            reservaId: doc.id
+                                        }
+                                    };
+                                });
+                            } catch (error) {
+                                console.error("Error al cargar reservas:", error);
+                                return [];
+                            }
+                        }
+
+                        // =============================================
+                        // MANEJAR SELECCIÓN DE FECHA
+                        // =============================================
+                        async function handleDateClick(info) {
+                            const date = info.date;
+                            const today = new Date();
+
+                            // Validar que no sea fecha pasada
+                            if (date < today && date.toDateString() !== today.toDateString()) {
+                                alert('No puedes seleccionar una fecha pasada.');
+                                return;
+                            }
+
+                            selectedDate = date;
+                            document.getElementById('selectedDate').value = formatDate(date);
+                            await loadAvailableHours(date);
+                        }
+
+                        // Formatear fecha en español
+                        function formatDate(date) {
+                            return date.toLocaleDateString('es-ES', {
+                                weekday: 'long',
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            });
+                        }
+
+                        // =============================================
+                        // CARGAR HORAS DISPONIBLES (ACTUALIZADO PARA GOOGLE CALENDAR)
+                        // =============================================
+                        async function loadAvailableHours(date) {
+                            const dateStr = date.toISOString().split('T')[0];
+                            const timeSlotSelect = document.getElementById('timeSlot');
+                            timeSlotSelect.innerHTML = '<option value="" disabled selected>Selecciona una hora</option>';
+
+                            try {
+                                // Obtener todos los eventos para esta fecha
+                                const allEvents = calendar.getEvents();
+
+                                // Filtrar eventos para esta fecha específica
+                                const bookedEvents = allEvents.filter(event => {
+                                    if (!event.start) return false;
+
+                                    const eventDate = event.start.toISOString().split('T')[0];
+                                    return eventDate === dateStr;
+                                });
+
+                                // Obtener horas ocupadas
+                                const bookedHours = bookedEvents.map(event => {
+                                    if (event.start) {
+                                        return event.start.toLocaleTimeString('es-ES', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        });
+                                    }
+                                    return null;
+                                }).filter(Boolean);
+
+                                // Filtrar horas disponibles
+                                const available = availableTimeSlots.filter(h => !bookedHours.includes(h));
+
+                                // Llenar select con horas disponibles
+                                available.forEach(hour => {
+                                    const option = document.createElement('option');
+                                    option.value = hour;
+                                    option.textContent = hour;
+                                    timeSlotSelect.appendChild(option);
+                                });
+
+                                if (available.length === 0) {
+                                    const option = document.createElement('option');
+                                    option.textContent = 'No hay horarios disponibles';
+                                    option.disabled = true;
+                                    timeSlotSelect.appendChild(option);
+                                }
+                            } catch (error) {
+                                console.error("Error al cargar horas:", error);
+                            }
+                        }
+
+                        // =============================================
+                        // MANEJAR CLIC EN EVENTO
+                        // =============================================
+                        function handleEventClick(info) {
+                            const event = info.event;
+                            let message = `Evento: ${event.title}\n`;
+
+                            if (event.start) {
+                                message += `Fecha: ${formatDate(event.start)}\n`;
+                                if (event.start.getHours()) {
+                                    message += `Hora: ${event.start.toLocaleTimeString('es-ES')}\n`;
+                                }
+                            }
+
+                            if (event.extendedProps.source === 'google') {
+                                message += "\n(Evento del calendario del fotógrafo)";
+                            } else {
+                                message += "\n(Reserva desde tu sitio web)";
+                            }
+
+                            alert(message);
+                        }
+
+                        // =============================================
+                        // MANEJAR ENVÍO DE FORMULARIO (ACTUALIZADO)
+                        // =============================================
+                        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+                            e.preventDefault();
+                            const submitBtn = document.getElementById('submitBtn');
+                            submitBtn.disabled = true;
+                            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Procesando...';
+
+                            try {
+                                // Validaciones
+                                if (!selectedDate) throw new Error('Por favor selecciona una fecha');
+                                if (!document.getElementById('termsCheck').checked) throw new Error('Debes aceptar los términos y condiciones');
+
+                                const bookingData = {
+                                    nombre: document.getElementById('clientName').value.trim(),
+                                    email: document.getElementById('clientEmail').value.trim(),
+                                    telefono: document.getElementById('clientPhone').value.trim(),
+                                    fecha: selectedDate.toISOString().split('T')[0],
+                                    hora: document.getElementById('timeSlot').value,
+                                    tipo: document.getElementById('sessionType').value,
+                                    ubicacion: document.getElementById('location').value,
+                                    notas: document.getElementById('notes').value.trim(),
+                                    fechaRegistro: new Date().toISOString(),
+                                    estado: 'confirmada'
+                                };
+
+                                // Validar campos obligatorios
+                                if (!bookingData.nombre || !bookingData.email || !bookingData.telefono || !bookingData.hora || !bookingData.tipo) {
+                                    throw new Error('Por favor completa todos los campos obligatorios');
+                                }
+
+                                // Validar formato de email
+                                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(bookingData.email)) {
+                                    throw new Error('Por favor ingresa un email válido');
+                                }
+
+                                // Guardar en Firebase
+                                const docRef = await db.collection('reservas').add(bookingData);
+
+                                // Agregar evento al calendario
+                                calendar.addEvent({
+                                    title: 'Reservado - ' + bookingData.nombre,
+                                    start: `${bookingData.fecha}T${bookingData.hora}:00`,
+                                    backgroundColor: '#dc3545',
+                                    borderColor: '#dc3545',
+                                    extendedProps: {
+                                        source: 'firebase',
+                                        status: 'booked',
+                                        reservaId: docRef.id
+                                    }
+                                });
+
+                                // Mostrar confirmación
+                                showConfirmation(bookingData);
+
+                                // Limpiar formulario
+                                document.getElementById('bookingForm').reset();
+                                selectedDate = null;
+
+                            } catch (error) {
+                                alert(error.message);
+                                console.error("Error al procesar reserva:", error);
+                            } finally {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = '<i class="fas fa-calendar-plus me-2"></i> Confirmar Reserva';
+                            }
+                        });
+
+                        // =============================================
+                        // MOSTRAR MODAL DE CONFIRMACIÓN
+                        // =============================================
+                        function showConfirmation(bookingData) {
+                            document.getElementById('modalName').textContent = bookingData.nombre;
+                            document.getElementById('modalDate').textContent = formatDate(new Date(bookingData.fecha));
+                            document.getElementById('modalTime').textContent = bookingData.hora;
+                            document.getElementById('modalSessionType').textContent =
+                                document.getElementById('sessionType').options[document.getElementById('sessionType').selectedIndex].text;
+
+                            const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+                            modal.show();
+                        }
+
+                        // =============================================
+                        // INICIALIZAR APLICACIÓN
+                        // =============================================
+                        await initCalendar();
+
+                        // Inicializar animaciones
+                        new WOW().init();
+                    });
+                </script>
+
+                <!-- Template Javascript -->
+                <script src="js/main.js"></script>
+</body>
+
+</html>

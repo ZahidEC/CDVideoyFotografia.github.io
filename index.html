@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fotógrafo Profesional | Portafolio y Servicios</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="fotógrafo profesional, sesiones fotográficas, bodas, retratos" name="keywords">
+    <meta content="Portafolio profesional de fotografía con servicios personalizados y reserva de citas" name="description">
+
+    <!-- Favicon -->
+    <link href="img/camera-favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-camera me-3"></i>CD </h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                <a href="about.html" class="nav-item nav-link">Sobre Mí</a>
+                <a href="portafolio_1.html" class="nav-item nav-link">Portafolio</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="bodas.html" class="dropdown-item">Bodas</a>
+                        <a href="retratos.html" class="dropdown-item">Retratos</a>
+                        <a href="eventos.html" class="dropdown-item">Eventos</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+            </div>
+            <a href="reservas.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Reservar Sesión<i class="fa fa-calendar ms-3"></i></a>
+            <a href="login.html" class="nav-item nav-link"><i class="fa fa-user me-1"></i> Iniciar Sesión</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/Foto boda.jpg" alt="Fotografía de boda">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Fotografía Profesional</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Capturando Momentos Inolvidables</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Servicios personalizados para bodas, eventos y sesiones creativas con estilo único y atención detallada.</p>
+                                <a href="portfolio.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Ver Portafolio</a>
+                                <a href="reservas.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Reservar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/image-inicio.jpg" alt="Sesión de retrato">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Sesiones Creativas</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Retratos con Alma</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Descubre tu mejor versión con sesiones personalizadas en estudio o locaciones exclusivas.</p>
+                                <a href="retratos.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Paquetes</a>
+                                <a href="contact.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Consultar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+    <!-- Servicios Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Servicios</h6>
+                <h1 class="mb-5">Lo Que Ofrezco</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-ring text-primary mb-4"></i>
+                            <h5 class="mb-3">Bodas</h5>
+                            <p>Cobertura completa desde la preparación hasta el último baile.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                            <h5 class="mb-3">Retratos</h5>
+                            <p>Sesiones profesionales para individuos, familias y mascotas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-glass-cheers text-primary mb-4"></i>
+                            <h5 class="mb-3">Eventos</h5>
+                            <p>Captura la esencia de tus eventos corporativos o sociales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-magic text-primary mb-4"></i>
+                            <h5 class="mb-3">Edición Profesional</h5>
+                            <p>Retoque y mejoramiento de imágenes con estándares premium.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Servicios End -->
+
+    
+    <!-- Paquetes Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-dark px-3">Servicios</h6>
+            <h1 class="mb-5">Paquetes Fotográficos</h1>
+            <p class="mb-5">Selecciona el paquete que mejor se adapte a tus necesidades. Todos incluyen edición profesional y entrega digital.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Paquete Básico -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="package-item bg-light border">
+                    <div class="p-4 text-center border-bottom">
+                        <h3 class="mb-0">Básico</h3>
+                        <div class="d-flex justify-content-center">
+                            <span class="h4 mb-0 mt-2">$</span>
+                            <h1 class="display-5 mb-0" style="color: var(--dark);">150</h1>
+                            <span class="h4 mb-0 mt-2">.000</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>1 hora de sesión</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>15 fotos editadas</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>2 cambios de outfit</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>Entrega en 7 días</li>
+                            <li class="mb-3 text-muted"><i class="fa fa-times me-2"></i>Locación no incluida</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="contact.html" class="btn btn-dark py-2 px-4 mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paquete Premium (Destacado) -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="package-item bg-dark text-light border-0 position-relative" style="transform: scale(1.05); z-index: 1;">
+                    <div class="p-4 text-center border-bottom border-light">
+                        <div class="position-absolute top-0 end-0 mt-3 me-3">
+                            <span class="badge bg-light text-dark py-1 px-3">Popular</span>
+                        </div>
+                        <h3 class="mb-0 text-light">Premium</h3>
+                        <div class="d-flex justify-content-center">
+                            <span class="h4 mb-0 mt-2">$</span>
+                            <h1 class="display-5 mb-0 text-light">250</h1>
+                            <span class="h4 mb-0 mt-2">.000</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fa fa-check text-light me-2"></i>3 horas de sesión</li>
+                            <li class="mb-3"><i class="fa fa-check text-light me-2"></i>35 fotos editadas</li>
+                            <li class="mb-3"><i class="fa fa-check text-light me-2"></i>5 cambios de outfit</li>
+                            <li class="mb-3"><i class="fa fa-check text-light me-2"></i>Entrega en 5 días</li>
+                            <li class="mb-3"><i class="fa fa-check text-light me-2"></i>1 locación incluida</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="contact.html" class="btn btn-light py-2 px-4 mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paquete Completo -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="package-item bg-light border">
+                    <div class="p-4 text-center border-bottom">
+                        <h3 class="mb-0">Completo</h3>
+                        <div class="d-flex justify-content-center">
+                            <span class="h4 mb-0 mt-2">$</span>
+                            <h1 class="display-5 mb-0" style="color: var(--dark);">400</h1>
+                            <span class="h4 mb-0 mt-2">.000</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>6 horas de cobertura</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>80+ fotos editadas</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>Outfits ilimitados</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>Entrega en 3 días</li>
+                            <li class="mb-3"><i class="fa fa-check text-dark me-2"></i>2 locaciones + estudio</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="contact.html" class="btn btn-dark py-2 px-4 mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nota adicional -->
+        <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.7s">
+            <p class="mb-0">¿Necesitas algo personalizado? <a href="contact.html" class="text-dark fw-medium">Contáctame</a> para crear un paquete a tu medida.</p>
+        </div>
+    </div>
+</div>
+<!-- Paquetes End -->
+
+    <!-- Sobre Mí Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="img/Cedillo.jpg" alt="Fotógrafo trabajando" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Sobre Mí</h6>
+                    <h1 class="mb-4">Fotógrafo Profesional con 10+ Años de Experiencia</h1>
+                    <p class="mb-4">Especializado en contar historias a través de imágenes auténticas y emotivas. Mi enfoque combina técnica avanzada con una sensibilidad artística única.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Equipo profesional</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Edición premium</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Entrega rápida</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Sesiones en locación</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="about.html">Mi Historia</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sobre Mí End -->
+
+    <!-- Portafolio Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Trabajos</h6>
+                <h1 class="mb-5">Mi Portafolio</h1>
+            </div>
+            <div class="row g-4 portfolio-container">
+                <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="portfolio-inner rounded">
+                        <img class="img-fluid" src="img/Portafolio BOda.jpg" alt="Boda en playa">
+                        <div class="portfolio-text">
+                            <h4 class="text-white mb-4">Boda en Playa</h4>
+                            <div class="d-flex">
+                                <a class="btn btn-sm-square btn-light mx-1" href="img/Portafolio BOda.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-sm-square btn-light mx-1" href="portafolio_1.html"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="portfolio-inner rounded">
+                        <img class="img-fluid" src="img/Retrato femenino.jpg" alt="Retrato femenino">
+                        <div class="portfolio-text">
+                            <h4 class="text-white mb-4">Retrato Editorial</h4>
+                            <div class="d-flex">
+                                <a class="btn btn-sm-square btn-light mx-1" href="img/Retrato femenino.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-sm-square btn-light mx-1" href="retratos.html"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="portfolio-inner rounded">
+                        <img class="img-fluid" src="img/Portafolio xd.jpg" alt="Evento corporativo">
+                        <div class="portfolio-text">
+                            <h4 class="text-white mb-4">Lanzamiento de Producto</h4>
+                            <div class="d-flex">
+                                <a class="btn btn-sm-square btn-light mx-1" href="img/Portafolio xd.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-sm-square btn-light mx-1" href="eventos.html"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a class="btn btn-primary py-3 px-5" href="portfolio.html">Ver Más Trabajos</a>
+            </div>
+        </div>
+    </div>
+    <!-- Portafolio End -->
+
+    <!-- Testimonios Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Testimonios</h6>
+                <h1 class="mb-5">Lo Que Dicen Mis Clientes</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Ana y Carlos</h5>
+                    <p>Boda en Viña del Mar</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                    <p class="mb-0">"Capturó cada momento especial de nuestro día con una sensibilidad increíble. Las fotos superaron todas nuestras expectativas."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">María José</h5>
+                    <p>Sesión de Embarazo</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                    <p class="mb-0">"Logró que me sintiera cómoda y natural frente a la cámara. Los resultados son exactamente lo que quería para recordar esta etapa."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonios End -->
+
+    <!-- CTA Start -->
+    <div class="container-xxl py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-5 mb-4">¿Listo para Capturar Tus Momentos Especiales?</h1>
+                    <p class="mb-4">Contáctame para discutir tu proyecto y recibir una cotización personalizada.</p>
+                    <a href="contact.html" class="btn btn-light py-3 px-5">Consultar Disponibilidad</a>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-white text-center p-4 rounded" style="color: #06113E !important;">
+                        <i class="fa fa-phone-alt fa-3x mb-3"></i>
+                        <h4>Contacto Rápido</h4>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-2"></i>775 182 0299</p>
+                        <p class="mb-0"><i class="fa fa-envelope me-2"></i>cedillo1618@outlook.es</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CTA End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Enlaces</h4>
+                    <a class="btn btn-link" href="about.html">Sobre Mí</a>
+                    <a class="btn btn-link" href="contact.html">Contacto</a>
+                    <a class="btn btn-link" href="privacy.html">Privacidad</a>
+                    <a class="btn btn-link" href="terms.html">Términos</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contacto</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Tulancingo hidalgo centro , Tulancingo, Mexico</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>775 182 0299</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>cedillo1618@outlook.es</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/CLFotoVideo/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Galería</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-4.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-5.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/portfolio-thumb-6.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">CD Fotografía y Video</a>, Todos los derechos reservados.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

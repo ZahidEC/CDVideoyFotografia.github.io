@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Meta consistentes con el sitio principal -->
+    <meta charset="utf-8">
+    <title>Portafolio | Fotógrafo Profesional</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="portafolio fotográfico, galería de fotos, trabajos fotográficos" name="keywords">
+    <meta content="Galería de trabajos profesionales del fotógrafo, incluyendo bodas, retratos y eventos" name="description">
+
+    <!-- Favicon -->
+    <link href="img/camera-favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Estilos específicos del portafolio -->
+    <link href="css/portfolio.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner (consistente con el sitio principal) -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Navbar (igual al sitio principal) -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-camera me-3"></i>CD </h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Inicio</a>
+                <a href="about.html" class="nav-item nav-link">Sobre Mí</a>
+                <a href="portfolio.html" class="nav-item nav-link active">Portafolio</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="bodas.html" class="dropdown-item">Bodas</a>
+                        <a href="retratos.html" class="dropdown-item">Retratos</a>
+                        <a href="eventos.html" class="dropdown-item">Eventos</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+            </div>
+            <a href="reservas.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Reservar Sesión<i class="fa fa-calendar ms-3"></i></a>
+            <a href="login.html" class="nav-item nav-link"><i class="fa fa-user me-1"></i> Iniciar Sesión</a>
+        </div>
+    </nav>
+
+    <!-- Encabezado del Portafolio -->
+    <div class="container-xxl py-5 portfolio-header">
+        <div class="container text-center">
+            <div class="wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Galería</h6>
+                <h1 class="mb-5">Mi Portafolio Fotográfico</h1>
+                <p class="mb-4">Una selección de mis mejores trabajos en bodas, retratos y eventos especiales.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros de Categorías -->
+    <div class="container-xxl pb-4">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.2s">
+                <div class="portfolio-filter">
+                    <button class="btn btn-filter active" data-filter="all">Todos</button>
+                    <button class="btn btn-filter" data-filter="bodas">Bodas</button>
+                    <button class="btn btn-filter" data-filter="retratos">Retratos</button>
+                    <button class="btn btn-filter" data-filter="eventos">Eventos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galería de Trabajos -->
+    <div class="container-fluid pb-5">
+        <div class="row justify-content-center g-4 portfolio-gallery">
+            <!-- Item 1 - Boda -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="bodas">
+                <div class="portfolio-card">
+                    <img src="img/testimonial-3.jpg" class="img-fluid" alt="Boda en playa">
+                    <div class="portfolio-overlay">
+                        <div class="overlay-content">
+                            <h4>Boda en Playa</h4>
+                            <p>Sesión completa de boda en Viña del Mar</p>
+                            <a href="bodas.html" class="btn btn-sm btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 2 - Retrato -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="retratos">
+                <div class="portfolio-card">
+                    <img src="img/Portafolio BOda.jpg" class="img-fluid" alt="Retrato femenino">
+                    <div class="portfolio-overlay">
+                        <div class="overlay-content">
+                            <h4>Retrato Editorial</h4>
+                            <p>Sesión de moda en estudio profesional</p>
+                            <a href="retratos.html" class="btn btn-sm btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 3 - Evento -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="eventos">
+                <div class="portfolio-card">
+                    <img src="img/Retrato femenino.jpg" class="img-fluid" alt="Evento corporativo">
+                    <div class="portfolio-overlay">
+                        <div class="overlay-content">
+                            <h4>Lanzamiento Corporativo</h4>
+                            <p>Cobertura de evento para empresa tecnológica</p>
+                            <a href="eventos.html" class="btn btn-sm btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 4 - Boda -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="bodas">
+                <div class="portfolio-card">
+                    <img src="img/Portafolio xd.jpg" class="img-fluid" alt="Boda tradicional">
+                    <div class="portfolio-overlay">
+                        <div class="overlay-content">
+                            <h4>Boda Tradicional</h4>
+                            <p>Ceremonia en iglesia y recepción</p>
+                            <a href="bodas.html" class="btn btn-sm btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 5 - Retrato -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="retratos">
+                <div class="portfolio-card">
+                    <img src="img/Foto boda.jpg" class="img-fluid" alt="Retrato familiar">
+                    <div class="portfolio-overlay">
+                        <div class="overlay-content">
+                            <h4>Familia en Parque</h4>
+                            <p>Sesión familiar al aire libre</p>
+                            <a href="retratos.html" class="btn btn-sm btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 6 - Evento -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="eventos">
+                <div class="portfolio-card">
+                    <img src="img/Cedillo.jpg" class="img-fluid" alt="Fiesta de cumpleaños">
+                    <div class="portfolio-overlay">
+                        <div class="overlay-content">
+                            <h4>Cumpleaños VIP</h4>
+                            <p>Celebración de aniversario en salón privado</p>
+                            <a href="eventos.html" class="btn btn-sm btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA consistente con el sitio principal -->
+    <div class="container-xxl py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-5 mb-4">¿Te gustó mi trabajo?</h1>
+                    <p class="mb-4">Contáctame para reservar tu sesión fotográfica o para más información sobre mis servicios.</p>
+                    <a href="contact.html" class="btn btn-light py-3 px-5">Contactar Ahora</a>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-white text-center p-4 rounded" style="color: #06113E !important;">
+                        <i class="fa fa-phone-alt fa-3x mb-3"></i>
+                        <h4>Contacto Rápido</h4>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-2"></i>Numero</p>
+                        <p class="mb-0"><i class="fa fa-envelope me-2"></i>Correo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (igual al sitio principal) -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Enlaces</h4>
+                    <a class="btn btn-link" href="about.html">Sobre Mí</a>
+                    <a class="btn btn-link" href="contact.html">Contacto</a>
+                    <a class="btn btn-link" href="privacy.html">Privacidad</a>
+                    <a class="btn btn-link" href="terms.html">Términos</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contacto</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Ubi</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>Numero</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>Correo</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Galería</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/Cedillo.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img//Foto boda.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/Portafolio xd.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/Portafolio BOda.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/Retrato femenino.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/testimonial-2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Fotografx</a>, Todos los derechos reservados.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Script específico del portafolio -->
+    <script src="js/portfolio.js"></script>
+</body>
+</html>

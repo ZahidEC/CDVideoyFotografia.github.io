@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Panel de Administración | Fotógrafo</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="panel administración fotógrafo, gestión de citas" name="keywords">
+    <meta content="Panel de administración para gestión de citas y clientes" name="description">
+
+    <!-- Favicon -->
+    <link href="img/camera-favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Datatables CSS -->
+    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+</head>
+
+<body class="admin-dashboard">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-dark" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3 bg-dark">
+        <nav class="navbar navbar-dark">
+            <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <h3 class="text-light"><i class="fa fa-camera me-2"></i>FOTOGRAFX</h3>
+            </a>
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <img class="rounded-circle" src="img/admin-avatar.jpg" alt="Admin" style="width: 40px; height: 40px;">
+                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0 text-light">Admin</h6>
+                    <span class="text-muted">Fotógrafo</span>
+                </div>
+            </div>
+            <div class="navbar-nav w-100">
+                <a href="admin.html" class="nav-item nav-link active"><i class="fa fa-calendar-alt me-2"></i>Citas</a>
+                <a href="admin-clients.html" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Clientes</a>
+                <a href="admin-gallery.html" class="nav-item nav-link"><i class="fa fa-images me-2"></i>Galería</a>
+                <a href="admin-finance.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Finanzas</a>
+                <a href="admin-settings.html" class="nav-item nav-link"><i class="fa fa-cog me-2"></i>Configuración</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Sidebar End -->
+
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+            <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <h2 class="text-dark mb-0"><i class="fa fa-camera"></i></h2>
+            </a>
+            <a href="#" class="sidebar-toggler flex-shrink-0">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div class="navbar-nav align-items-center ms-auto">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa fa-bell me-lg-2"></i>
+                        <span class="d-none d-lg-inline-flex">Notificaciones</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end border-0 rounded-0 rounded-bottom m-0">
+                        <a href="#" class="dropdown-item">
+                            <h6 class="fw-normal mb-0">Nueva cita reservada</h6>
+                            <small>Hace 15 minutos</small>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                            <h6 class="fw-normal mb-0">Pago confirmado</h6>
+                            <small>Hace 1 hora</small>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                            <h6 class="fw-normal mb-0">Mensaje nuevo</h6>
+                            <small>Hace 3 horas</small>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item text-center">Ver todas</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img class="rounded-circle me-lg-2" src="img/admin-avatar.jpg" alt="User" style="width: 40px; height: 40px;">
+                        <span class="d-none d-lg-inline-flex">Admin</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end border-0 rounded-0 rounded-bottom m-0">
+                        <a href="#" class="dropdown-item">Mi Perfil</a>
+                        <a href="#" class="dropdown-item">Configuración</a>
+                        <a href="index.html" class="dropdown-item">Ver Sitio Web</a>
+                        <a href="#" class="dropdown-item">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+
+        <!-- Panel de Citas Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="bg-light rounded h-100 p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h4 class="mb-0">Gestión de Citas</h4>
+                            <div>
+                                <button class="btn btn-dark btn-sm me-2"><i class="fa fa-filter me-2"></i>Filtrar</button>
+                                <button class="btn btn-dark btn-sm"><i class="fa fa-plus me-2"></i>Nueva Cita</button>
+                            </div>
+                        </div>
+
+                        <!-- Filtros Rápidos -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <select class="form-select form-select-sm">
+                                    <option selected>Estado: Todos</option>
+                                    <option>Pendientes</option>
+                                    <option>Confirmadas</option>
+                                    <option>Completadas</option>
+                                    <option>Canceladas</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="date" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select form-select-sm">
+                                    <option selected>Tipo de Sesión: Todas</option>
+                                    <option>Boda</option>
+                                    <option>Retrato</option>
+                                    <option>Evento</option>
+                                    <option>Producto</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm" placeholder="Buscar cliente...">
+                            </div>
+                        </div>
+
+                        <!-- Tabla de Citas -->
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="citasTable">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Hora</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Paquete</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="img/client-1.jpg" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                                                <span>María González</span>
+                                            </div>
+                                        </td>
+                                        <td>15/06/2023</td>
+                                        <td>10:00 AM</td>
+                                        <td>Boda</td>
+                                        <td>Premium</td>
+                                        <td><span class="badge bg-success bg-opacity-10 text-success">Confirmada</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="img/client-2.jpg" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                                                <span>Carlos Pérez</span>
+                                            </div>
+                                        </td>
+                                        <td>18/06/2023</td>
+                                        <td>04:00 PM</td>
+                                        <td>Retrato</td>
+                                        <td>Básico</td>
+                                        <td><span class="badge bg-warning bg-opacity-10 text-warning">Pendiente</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="img/client-3.jpg" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                                                <span>Ana Sánchez</span>
+                                            </div>
+                                        </td>
+                                        <td>20/06/2023</td>
+                                        <td>11:00 AM</td>
+                                        <td>Evento</td>
+                                        <td>Completo</td>
+                                        <td><span class="badge bg-primary bg-opacity-10 text-primary">Pagado</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="img/client-4.jpg" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                                                <span>Jorge Martínez</span>
+                                            </div>
+                                        </td>
+                                        <td>22/06/2023</td>
+                                        <td>03:00 PM</td>
+                                        <td>Producto</td>
+                                        <td>Premium</td>
+                                        <td><span class="badge bg-danger bg-opacity-10 text-danger">Cancelada</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-dark me-1"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Estadísticas Rápidas -->
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <div class="bg-white p-3 rounded border text-center">
+                                    <h5 class="mb-0">12</h5>
+                                    <small class="text-muted">Citas este mes</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="bg-white p-3 rounded border text-center">
+                                    <h5 class="mb-0">8</h5>
+                                    <small class="text-muted">Confirmadas</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="bg-white p-3 rounded border text-center">
+                                    <h5 class="mb-0">3</h5>
+                                    <small class="text-muted">Pendientes</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="bg-white p-3 rounded border text-center">
+                                    <h5 class="mb-0">$1,250.000</h5>
+                                    <small class="text-muted">Ingresos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Panel de Citas End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center text-sm-start">
+                        &copy; <a href="#">Fotografx</a>, Todos los derechos reservados.
+                    </div>
+                    <div class="col-12 col-sm-6 text-center text-sm-end">
+                        Versión 1.0.0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+
+    <!-- Datatables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Inicializar DataTable
+        $(document).ready(function() {
+            $('#citasTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-CL.json'
+                },
+                responsive: true
+            });
+        });
+
+        // Toggle sidebar
+        $('.sidebar-toggler').click(function () {
+            $('.sidebar, .content').toggleClass("open");
+            return false;
+        });
+    </script>
+</body>
+
+</html>
